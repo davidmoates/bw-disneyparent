@@ -1,35 +1,77 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from "axios";
 
-class SignInForm extends Component {
-    constructor() {
-        super();
+export class SignInForm extends Component {
+  state = {
+  // username: "",
+  email: "",
+  password: "",
+  // accountType: "parent",
+  resData: []
+};
+//==========================  Old Constructor function Code  ==============================================//
+    // constructor() {
+    //     super();
+    //
+    //     this.state = {
+    //         email: '',
+    //         password: ''
+    //     };
+    //
+    //     this.handleChange = this.handleChange.bind(this);
+    //     this.handleSubmit = this.handleSubmit.bind(this);
+    // }
+//==================================================================//
 
-        this.state = {
-            email: '',
-            password: ''
-        };
+    handleChange = e => {
+      this.setState({ [e.target.name]: e.target.value });
+    };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+//==========================  Old Handle CHange Code  ==============================================//
+    // handleChange(e) {
+    //     let target = e.target;
+    //     let value = target.type === 'checkbox' ? target.checked : target.value;
+    //     let name = target.name;
+    //
+    //     this.setState({
+    //       [name]: value
+    //     });
+    // }
+//==================================================================//
 
-    handleChange(e) {
-        let target = e.target;
-        let value = target.type === 'checkbox' ? target.checked : target.value;
-        let name = target.name;
 
-        this.setState({
-          [name]: value
-        });
-    }
+handleSubmit = e => {
+  e.preventDefault();
+  console.log('The form was submitted with the following data:');
+  console.log(this.state);
 
-    handleSubmit(e) {
-        e.preventDefault();
 
-        console.log('The form was submitted with the following data:');
-        console.log(this.state);
-    }
+  axios
+    .post(
+      `https://disney-parent-bw-2.herokuapp.com/auth/parents/login`,
+      this.state
+    )
+    .then(res => {
+      console.log("response", res);
+      console.log(res.data);
+      // console.log(res.data.message);
+      // console.log(res.status);
+      // console.log(res.data.token);
+      if (res.status === 200) {
+        console.log("yes status 200");
+        // ls.set("token", res.data.token);
+        // ls.set("message", res.data.message);
+        window.location = "./dashboard";
+      } else {
+        alert("Invalid user information entered. Please try again.");
+      }
+
+    })
+    .catch(err => {
+      console.log("error", err);
+    });
+};
 
     render() {
         return (
