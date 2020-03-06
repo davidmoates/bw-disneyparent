@@ -4,11 +4,8 @@ import axios from "axios";
 
 export class SignInForm extends Component {
   state = {
-  // username: "",
   email: "",
   password: "",
-  // accountType: "parent",
-  resData: []
 };
 //==========================  Old Constructor function Code  ==============================================//
     // constructor() {
@@ -41,37 +38,6 @@ export class SignInForm extends Component {
 //==================================================================//
 
 
-handleSubmit = e => {
-  e.preventDefault();
-  console.log('The form was submitted with the following data:');
-  console.log(this.state);
-
-
-  axios
-    .post(
-      `https://disney-parent-bw-2.herokuapp.com/auth/parents/login`,
-      this.state
-    )
-    .then(res => {
-      console.log("response", res);
-      console.log(res.data);
-      // console.log(res.data.message);
-      // console.log(res.status);
-      // console.log(res.data.token);
-      if (res.status === 200) {
-        console.log("yes status 200");
-        // ls.set("token", res.data.token);
-        // ls.set("message", res.data.message);
-        window.location = "./dashboard";
-      } else {
-        alert("Invalid user information entered. Please try again.");
-      }
-
-    })
-    .catch(err => {
-      console.log("error", err);
-    });
-};
 
     render() {
         return (

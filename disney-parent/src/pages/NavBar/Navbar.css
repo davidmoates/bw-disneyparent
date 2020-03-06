@@ -1,0 +1,40 @@
+.navbar {
+  /* background: #222; */
+  background: rgb(108, 224, 211);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: var(--navFontTurncoat);
+}
+
+@media (max-width: 599px) {
+  .navbar {
+    flex-direction: column;
+  }
+}
+
+img {
+  margin: 1rem 2rem 0.8rem 3rem;
+}
+
+.nav-links {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+.navbar .link {
+  font-size: 3.4rem;
+  font-weight: bold;
+  color: #222;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link li {
+  cursor: pointer;
+}

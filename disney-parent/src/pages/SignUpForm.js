@@ -1,38 +1,71 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-class SignUpForm extends Component {
-  constructor() {
-      super();
+export class SignUpForm extends Component {
 
-      this.state = {
-          email: '',
-          password: '',
-          name: '',
-          hasAgreed: false
-      };
+  state = {
+  username: "",
+  password: "",
+  email: "",
+  hasAgreed:false
+  // accountType: "parent"
+};
 
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-  }
+//========================  Old COnstructor Function Code  ===========================//
+  // constructor() {
+  //     super();
+  //
+  //     this.state = {
+  //         email: '',
+  //         password: '',
+  //         name: '',
+  //         hasAgreed: false
+  //     };
+  //
+  //     this.handleChange = this.handleChange.bind(this);
+  //     this.handleSubmit = this.handleSubmit.bind(this);
+  // }
+//================================================================//
 
-  handleChange(e) {
-      let target = e.target;
-      let value = target.type === 'checkbox' ? target.checked : target.value;
-      let name = target.name;
 
-      this.setState({
-        [name]: value
+  handleSubmit = e => {
+    e.preventDefault();
+
+    axios
+      .post(
+        `https://disney-parent-bw-2.herokuapp.com`,
+        this.state
+      )
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+        if (res.data === 201) {
+          console.log("Thank you, please log in");
+        }
       });
-  }
+  };
 
-  handleSubmit(e) {
-      e.preventDefault();
+//=========================  Old Handle Change/Submit Code  ===================================//
+  // handleChange(e) {
+  //     let target = e.target;
+  //     let value = target.type === 'checkbox' ? target.checked : target.value;
+  //     let name = target.name;
+  //
+  //     this.setState({
+  //       [name]: value
+  //     });
+  // }
+  //
+  // handleSubmit(e) {
+  //     e.preventDefault();
+  //
+  //     console.log('The form was submitted with the following data:');
+  //     console.log(this.state);
+  // }
 
-      console.log('The form was submitted with the following data:');
-      console.log(this.state);
-  }
+  //============================================================//
 
   render() {
       return (
