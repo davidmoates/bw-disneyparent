@@ -28,31 +28,47 @@ const Login = props => {
   };
 
   return (
-    <>
+    <div className="FormCenter">
       {console.log(login)}
       <form
         onSubmit={e => {
           e.preventDefault();
           handleSubmit();
         }}
+        className="FormFields"
       >
-        <input
-          type="text"
-          name="email"
-          placeholder="email"
-          value={login.name}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          value={login.name}
-          onChange={handleChange}
-        />
-        <button type="submit">Login</button>
+        <div className="FormField">
+          <label className="FormField__Label" htmlFor="email">
+            E-Mail Address
+          </label>
+          <input
+            className="FormField__Input"
+            type="text"
+            name="email"
+            value={login.name}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="FormField">
+          <label className="FormField__Label" htmlFor="password">
+            Password
+          </label>
+          <input
+            className="FormField__Input"
+            type="password"
+            name="password"
+            value={login.name}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="FormField">
+          <button className="FormField__Button mr-20" type="submit">
+            Login
+          </button>
+        </div>
+        
       </form>
-    </>
+    </div>
   );
 };
 

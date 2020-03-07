@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axiosWithAuth from "../axiosWithAuth";
-import { Input, Button, Form } from "./Styled";
 
 const Signup = props => {
   const [signup, setSignup] = useState({
@@ -35,68 +34,85 @@ const Signup = props => {
 
   return (
     <div>
-      <div>
-        <h2>Signup</h2>
-      </div>
-      <div>
-        <Form onSubmit={register}>
-          <h2>Disney Parents</h2>
-
-          <Input
-            type="text"
-            name="email"
-            placeholder="Email"
-            required="required"
-            value={signup.email}
-            onChange={handleChange}
-          />
-
-          <Input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required="required"
-            value={signup.password}
-            onChange={handleChange}
-          />
-          <Input
-            type="text"
-            name="name"
-            placeholder="Family Name"
-            required="required"
-            value={signup.name}
-            onChange={handleChange}
-          />
-          <Input
-            type="text"
-            name="number_of_kids"
-            placeholder="Number of Kids"
-            required="required"
-            value={signup.number_of_kids}
-            onChange={handleChange}
-          />
-          <Input
-            type="text"
-            name="ride"
-            placeholder="The Ride to Meet"
-            required="required"
-            value={signup.ride}
-            onChange={handleChange}
-          />
-          <Input
-            type="text"
-            name="time"
-            placeholder="The Time to Meet"
-            required="required"
-            value={signup.time}
-            onChange={handleChange}
-          />
-
-          <div>
-            <Button>Sign up</Button>
-            <Button>Login Page</Button>
+      <div className="FormCenter">
+        <form onSubmit={register} className="FormFields">
+          <div className="FormField">
+            <label className="FormField__Label">Email</label>
+            <input
+              className="FormField__Input"
+              type="text"
+              name="email"
+              required="required"
+              value={signup.email}
+              onChange={handleChange}
+            />
           </div>
-        </Form>
+
+          <div className="FormField">
+            <label className="FormField__Label">Password</label>
+            <input
+              className="FormField__Input"
+              type="password"
+              name="password"
+              required="required"
+              value={signup.password}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="FormField">
+            <label className="FormField__Label">Family Name</label>
+            <input
+              className="FormField__Input"
+              type="text"
+              name="name"
+              required="required"
+              value={signup.name}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="FormField">
+            <label className="FormField__Label">Number of Kids</label>
+            <input
+              className="FormField__Input"
+              type="text"
+              name="number_of_kids"
+              required="required"
+              value={signup.number_of_kids}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="FormField">
+            <label className="FormField__Label">The Ride to Meet</label>
+            <input
+              className="FormField__Input"
+              type="text"
+              name="ride"
+              required="required"
+              value={signup.ride}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="FormField">
+            <label className="FormField__Label">The Time to Meet</label>
+            <input
+              className="FormField__Input"
+              type="text"
+              name="time"
+              required="required"
+              value={signup.time}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="FormField">
+            <button className="FormField__Button mr-20" type="submit">
+              Sign-Up
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

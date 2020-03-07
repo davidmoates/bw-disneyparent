@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+
         <Router>
           <div className="App">
             //========================= Old Navigation Code
@@ -45,26 +45,11 @@ class App extends Component {
                 //{" "}
               </div>
               //=============================================================================//
-              <div className="FormTitle">
-                <NavLink
-                  to="/sign-in"
-                  activeClassName="FormTitle__Link--Active"
-                  className="FormTitle__Link"
-                >
-                  Sign In
-                </NavLink>{" "}
-                or{" "}
-                <NavLink
-                  exact
-                  to="/"
-                  activeClassName="FormTitle__Link--Active"
-                  className="FormTitle__Link"
-                >
-                  Sign Up
-                </NavLink>
+              
               </div>
-              <Route exact path="/" component={SignUpForm}></Route>
-              <Route path="/sign-in" component={SignInForm}></Route>
+              <Route exact path="/" component={Signup} />
+              <Route exact path="/login" component={Login} />
+              <ProtectedRoutes exact path="/parents" component={ParentsPage} />
             </div>
           </div>
         </Router>

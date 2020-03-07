@@ -21,9 +21,7 @@ const Li = styled.li`
 `;
 
 const ParentCard = props => {
-  {
-    console.log("Parent Card", props.parent);
-  }
+  
   return (
     <DivCard>
       <H2>{props.parent.email}</H2>
