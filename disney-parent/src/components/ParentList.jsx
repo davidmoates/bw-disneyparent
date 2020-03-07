@@ -19,9 +19,10 @@ const ParentList = ({ parents, updateParent }) => {
     e.preventDefault();
     axiosWithAuth()
       .put(`api/parents/${parentToEdit.id}`, parentToEdit)
-      .then(() => {
+      .then(res => {
+        console.log("get by id", res);
         axiosWithAuth()
-          .get("api.parents")
+          .get("api/parents")
           .then(res => {
             updateParent(res.data);
           })
@@ -40,12 +41,12 @@ const ParentList = ({ parents, updateParent }) => {
       .delete(`api/parents/${parent.id}`)
       .then(() => {
         axiosWithAuth()
-          .get("api.parents")
+          .get("api/parents")
           .then(res => {
             updateParent(res.data);
           })
           .catch(err => {
-            console.error("ParentList Edit Update Error", err.message);
+            console.error("ParentList Delete Update Error", err.message);
           });
         setEditing(false);
       })
