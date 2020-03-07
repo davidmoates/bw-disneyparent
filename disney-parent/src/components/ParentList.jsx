@@ -56,10 +56,11 @@ const ParentList = ({ parents, updateParent }) => {
 
   return (
     <div className="colors-wrap">
+      {console.log(parents)}
       <p>Parents</p>
       <ul>
         {parents.map(parent => (
-          <li key={parent.ride} onClick={() => editParent(parent)}>
+          <li key={parent.id} onClick={() => editParent(parent)}>
             <span>
               <span
                 className="delete"
